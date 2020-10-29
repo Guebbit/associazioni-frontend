@@ -1,0 +1,56 @@
+{
+	"days": [
+		"Domenica",
+		"Lunedì",
+		"Martedì",
+		"Mercoledì",
+		"Giovedì",
+		"Venerdì",
+		"Sabato"
+	],
+	"months": [
+		"Gennaio",
+		"Febbraio",
+		"Marzo",
+		"Aprile",
+		"Maggio",
+		"Giugno",
+		"Luglio",
+		"Agosto",
+		"Settembre",
+		"Ottobre",
+		"Novembre",
+		"Dicembre"
+	],
+	"meta": {
+		"title": "E-CSI E-Sport",
+		"description": "Il CSI scende in campo nel mondo E-Sport. Tornei online di vari videogames e piattaforme. Playstation, Xbox, Switch e Computer",
+		"og": {
+			"og:image": "https://ecsicarpi.it/images/logotipo-ecsi.png",
+			"og:image:alt": "esport csi carpi logo",
+			"og:image:width": "416",
+			"og:image:height": "440",
+			"og:image:type": "image/png",
+			"twitter:image": "https://ecsicarpi.it/images/logotipo-ecsi.png",
+			"twitter:title": "E-CSI E-Sport",
+			"twitter:description": "Il CSI scende in campo nel mondo E-Sport. Tornei online di vari videogames e piattaforme. Playstation, Xbox, Switch e Computer",
+			"twitter:card": "summary"
+		}
+	},
+	"info": {
+		"email": "info@mangabeats.it",
+		"tel": "320 345 5747",
+		"social": {
+			"facebook": {
+				"url": "https://www.facebook.com/carpiecsi",
+				"alt": "facebook e-csi csi carpi",
+				"text": "Facebook"
+			},
+			"instagram": {
+				"url": "https://www.instagram.com/e_csi_carpi/",
+				"alt": "instagram e-csi csi carpi esport",
+				"text": "Instagram"
+			}
+		}
+	}
+}

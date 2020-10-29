@@ -1,0 +1,26 @@
+{
+  "Contatti": {
+    "description": "Auto imported from components/Contatti.vue"
+  },
+  "LazyContatti": {
+    "description": "Auto imported from components/Contatti.vue"
+  },
+  "Form": {
+    "description": "Auto imported from components/Form.vue"
+  },
+  "LazyForm": {
+    "description": "Auto imported from components/Form.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/generic/Footer.vue"
+  },
+  "LazyFooter": {
+    "description": "Auto imported from components/generic/Footer.vue"
+  },
+  "Header": {
+    "description": "Auto imported from components/generic/Header.vue"
+  },
+  "LazyHeader": {
+    "description": "Auto imported from components/generic/Header.vue"
+  }
+}

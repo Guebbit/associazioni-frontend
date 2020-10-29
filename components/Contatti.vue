@@ -1,0 +1,53 @@
+<template>
+	<section id="contacts" class="contact-section container d-flex justify-content-center flex-column">
+		<div class="contact-info text-center">
+			<h2 class="page-title mb-5">
+				<span class="highlight1 white-text">Contatti</span>
+			</h2>
+			<p class="page-description mb-5">Per dubbi o domande, contattaci!</p>
+			<div class="d-flex justify-content-center flex-wrap">
+				<b-button
+					variant="outline-secondary"
+					class="contact-button d-inline-flex justify-content-center align-items-center"
+					:href="'mailto:'+$t('info.email')"
+				>
+					{{ $t("info.email") }}
+					<font-awesome-icon class="ml-4" :icon="['fas', 'envelope']" />
+				</b-button>
+				<b-button
+					variant="outline-secondary"
+					class="contact-button d-inline-flex justify-content-center align-items-center"
+					:href="'tel:'+$t('info.tel').replace(' ', '')"
+				>
+					{{ $t("info.tel") }}
+					<font-awesome-icon class="ml-4" :icon="['fab', 'whatsapp']" />
+				</b-button>
+			</div>
+			<div class="d-flex justify-content-center align-items-center">
+				<a v-for="(social, social_name) in $t('info.social')" :href="social.url" target="_blank" class="socialButton1 observer-activate-once" :class="social_name">
+					<font-awesome-icon :icon="['fab', social_name]" />
+				</a>
+			</div>
+		</div>
+	</section>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(faEnvelope, faPhone, faFacebook, faInstagram, faWhatsapp);
+
+const Component = Vue.extend({
+	name: 'contacts',
+	components: {
+		FontAwesomeIcon,
+	}
+});
+
+export default Component;
+</script>

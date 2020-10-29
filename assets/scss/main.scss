@@ -1,0 +1,10 @@
+@import '~/assets/scss/variables.scss';
+
+@import '@/node_modules/bootstrap/scss/bootstrap';
+@import '@/node_modules/bootstrap-vue/src/index.scss';
+@import '@/assets/scss/global';
+
+
+html{
+	background-color: #FFFFFF;
+}
