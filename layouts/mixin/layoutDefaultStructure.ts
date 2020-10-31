@@ -63,11 +63,6 @@ export default Vue.extend({
 			],
 			link: [
 				{
-					rel: 'icon',
-					type: 'image/x-icon',
-					href: '/images/favicon/favicon.ico'
-				},
-				{
 					rel: 'apple-touch-icon',
 					sizes: '180x180',
 					type: 'image/png',
@@ -93,15 +88,11 @@ export default Vue.extend({
 				{
 					rel: 'shortcut icon',
 					type: 'image/x-icon',
-					color: "#3a319c",
+					color: "#00bcd4",
 					href: '/images/favicon/safari-pinned-tab.svg'
 				},
 			],
-			script: [{
-				//TODO andrebbe solo in _uri.vue
-				type: "text/javascript",
-				src: 'https://www.paypal.com/sdk/js?client-id='+process.env.paypal_clientid+'&currency=EUR&disable-funding=sofort,mybank'
-			}],
+			script: [],
 		}
 	},
 	mounted(){

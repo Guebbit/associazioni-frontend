@@ -1,0 +1,140 @@
+.blogPage2{
+	padding: 60px 0;
+	.blog-panel{
+	    color:rgba(g-color("shades","black"),0.7);
+		font-size: 18px;
+		.blog-section,
+		figure,
+		.instructions{
+			border-radius: 4px;
+		}
+		.blog-section {
+			padding: 12px;
+			margin: 24px auto;
+			.blog-title{
+				position: relative;
+			    margin-bottom: 1em;
+				&:before{
+					content: "#";
+				    background: -webkit-gradient(linear,left top,right top,from($primary-color),to($secondary-color));
+				    background: linear-gradient(to right,$primary-color,$secondary-color);
+				    display: inline-block;
+				    margin-right: 0.3em;
+				    text-decoration: none;
+					font-size: 1.2em;
+					@include prefix((
+						background-clip: text,
+					    text-fill-color: transparent,
+					    box-decoration-break: clone
+					), webkit);
+					@include builder_compatibility("ie"){
+						background: transparent;
+						font-weight: 600;
+						color: $primary-color;
+					}
+				}
+			}
+			&.with-border{
+				border-style: solid;
+				border-width: 2px;
+				border-color: rgba(g-color("shades","black"),0.1);
+			}
+			&.active,
+			&:hover{
+				color:rgba(g-color("shades","black"),0.9);
+				@include prefix((
+					transition: all 0.4s
+				), webkit);
+				.blog-title{
+					&:before{
+						font-weight: 700;
+						@include prefix((
+							transform: scale(1.2),
+							transition: transform 0.2s
+						), webkit);
+					}
+				}
+				&.with-border{
+					&:nth-of-type(odd){
+						border-color: rgba($primary-color,0.4);
+					}
+					&:nth-of-type(even){
+						border-color: rgba($secondary-color,0.4);
+					}
+				}
+				&.with-intensity{
+					border: none;
+					&:nth-of-type(odd){
+						background-color: rgba($primary-color,0.6);
+					}
+					&:nth-of-type(even){
+						background-color: rgba($secondary-color,0.6);
+					}
+				}
+			}
+		}
+		.image-interrupt{
+			position: relative;
+			overflow: hidden;
+			height:250px;
+			margin: 0;
+			& > img{
+				@include builder_abscenter-xy;
+				width: 100%;
+			}
+		}
+		.instructions{
+			// PRISM TWILIGHT
+			background: #2d2d2d;
+			color: #ccc;
+			margin: .5em 0;
+			overflow: auto;
+			padding: 1em;
+			// -----------
+			position: relative;
+			padding-top: 24px;
+			@include builder_scrollbar($secondary-color,5px);
+			&::before {
+				position: absolute;
+				top: 0;
+			    right: 0;
+			    font-weight: 700;
+			    font-size: 1.2em;
+			    content: attr(rel);
+			    color: $secondary-color;
+			    width: 100%;
+				padding: 12px;
+				text-align: right;
+			}
+			&[rel=JS]::before {
+			    color: g-color("yellow","base");
+			}
+			& > div{
+				margin-top: 2em;
+			}
+		}
+	}
+	hr {
+		border: 0;
+		height: 5px;
+		margin: 4em 0;
+		background-image: -webkit-gradient(linear,left top,right top,from($primary-color),to($secondary-color));
+		background-image: linear-gradient(to right,$primary-color,$secondary-color);
+		border-radius: 5px;
+	}
+	&.dark-theme{
+		background-color: g-color("grey","darken-4");
+		.blog-panel{
+			color:rgba(g-color("shades","white"),0.7);
+			.blog-section{
+				&.with-border{
+					border-color: rgba(g-color("shades","white"),0.1);
+				}
+				&.active,
+				&:hover{
+					color:g-color("shades","white");
+				}
+			}
+		}
+	}
+}

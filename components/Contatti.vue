@@ -1,31 +1,16 @@
 <template>
-	<section id="contacts" class="contact-section container d-flex justify-content-center flex-column">
+	<section id="contacts" class="contact-section container d-flex justify-content-center flex-column mt-100">
 		<div class="contact-info text-center">
-			<h2 class="page-title mb-5">
+			<h2 class="page-title mb-30">
 				<span class="highlight1 white-text">Contatti</span>
 			</h2>
-			<p class="page-description mb-5">Per dubbi o domande, contattaci!</p>
-			<div class="d-flex justify-content-center flex-wrap">
-				<b-button
-					variant="outline-secondary"
-					class="contact-button d-inline-flex justify-content-center align-items-center"
-					:href="'mailto:'+$t('info.email')"
-				>
-					{{ $t("info.email") }}
-					<font-awesome-icon class="ml-4" :icon="['fas', 'envelope']" />
-				</b-button>
-				<b-button
-					variant="outline-secondary"
-					class="contact-button d-inline-flex justify-content-center align-items-center"
-					:href="'tel:'+$t('info.tel').replace(' ', '')"
-				>
-					{{ $t("info.tel") }}
-					<font-awesome-icon class="ml-4" :icon="['fab', 'whatsapp']" />
-				</b-button>
-			</div>
+			<p class="page-description mb-3">Per dubbi o domande, contattami!</p>
 			<div class="d-flex justify-content-center align-items-center">
-				<a v-for="(social, social_name) in $t('info.social')" :href="social.url" target="_blank" class="socialButton1 observer-activate-once" :class="social_name">
-					<font-awesome-icon :icon="['fab', social_name]" />
+				<a :href="'mailto:'+$t('info.email')" target="_blank" class="socialButton1 observer-activate-once">
+					<font-awesome-icon :icon="['fas', 'envelope']" />
+				</a>
+				<a :href="'tel:'+$t('info.tel').replace(' ', '')" target="_blank" class="socialButton1 whatsapp observer-activate-once">
+					<font-awesome-icon :icon="['fab', 'whatsapp']" />
 				</a>
 			</div>
 		</div>

@@ -1,15 +1,14 @@
 <template>
-	<section class="subscription-section container d-flex justify-content-center flex-column">
-		<h3 class="page-subtitle text-primary text-center">Iscrivi la tua associazione</h3>
-		<p class="page-description text-center">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+	<section class="subscription-section container d-flex justify-content-center flex-column mb-50 mt-50">
+		<h3 class="page-subtitle text-primary text-center">Associazioni di Carpi</h3>
+		<p class="page-description text-center mb-50">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
 		<b-form
 			v-if="!form_success && showForm"
-			class="mb-50 mt-50"
 			@submit.prevent="onFormSubmit"
 			@reset.prevent="onFormReset"
 		>
 			<div class="row">
-				<div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="col-12 col-md-6">
 					<b-form-group
 						label="Nome associazione"
 						label-for="form-input-assocname"
@@ -22,7 +21,7 @@
 						/>
 					</b-form-group>
 				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="col-12 col-md-6">
 					<b-form-group
 						label="URL sito web"
 						label-for="form-input-assocwebsite"
@@ -35,7 +34,7 @@
 					</b-form-group>
 				</div>
 
-				<div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="col-12 col-md-6">
 					<b-form-group
 						label="Parole chiave"
 						label-for="form-input-assockeywords"
@@ -47,7 +46,40 @@
 						/>
 					</b-form-group>
 				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="col-6 col-md-3">
+					<b-form-group
+						label="Logo associazione"
+						label-for="form-input-assoclogo"
+						description="Mandami il logo. Preferibilmente in vettoriale"
+					>
+						<b-form-file
+							id="form-input-assoclogo"
+							v-model="form.assoc_logo"
+							:state="Boolean(form.assoc_logo)"
+							placeholder="..."
+							drop-placeholder="Lancia qui il logo!"
+						/>
+					</b-form-group>
+				</div>
+				<div class="col-6 col-md-3">
+					<b-form-group
+						label="CV associazione"
+						label-for="form-input-assoccv"
+						description="Datemi qualche dettaglio di voi (facoltativo)"
+					>
+						<b-form-file
+							id="form-input-assoccv"
+							v-model="form.assoc_cv"
+							:state="Boolean(form.assoc_cv)"
+							placeholder="..."
+							drop-placeholder="Lancia qui il documento!"
+						/>
+					</b-form-group>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-12 col-md-6 col-lg-4">
 					<b-form-group
 						label="Nome referente"
 						label-for="form-input-refname"
@@ -56,12 +88,10 @@
 						<b-form-input
 							id="form-input-refname"
 							v-model="form.ref_name"
-							type="email"
-							required
 						/>
 					</b-form-group>
 				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="col-12 col-md-6 col-lg-4">
 					<b-form-group
 						label="Mail del referente"
 						label-for="form-input-refemail"
@@ -75,7 +105,7 @@
 						/>
 					</b-form-group>
 				</div>
-				<div class="col-sm-12 col-md-6 col-lg-4">
+				<div class="col-12 col-md-6 col-lg-4">
 					<b-form-group
 						label="Telefono del referente"
 						label-for="form-input-assoctel"
@@ -88,47 +118,17 @@
 						/>
 					</b-form-group>
 				</div>
-				<div class="col-sm-12 col-md-6">
-					<b-form-group
-						label="Logo associazione"
-						label-for="form-input-assoclogo"
-						description="Mandaci il logo. Preferibilmente in vettoriale"
-					>
-						<b-form-file
-							id="form-input-assoclogo"
-							v-model="form.assoc_logo"
-							:state="Boolean(form.assoc_logo)"
-							placeholder="..."
-							drop-placeholder="Lancia qui il logo!"
-						/>
-					</b-form-group>
-				</div>
-				<div class="col-sm-12 col-md-6">
-					<b-form-group
-						label="Curriculim Vitae dell'associazione"
-						label-for="form-input-assoccv"
-						description="Dateci qualche dettaglio di voi (facoltativo)"
-					>
-						<b-form-file
-							id="form-input-assoccv"
-							v-model="form.assoc_cv"
-							:state="Boolean(form.assoc_cv)"
-							placeholder="..."
-							drop-placeholder="Lancia qui il documento!"
-						/>
-					</b-form-group>
-				</div>
-
-				<div class="col-sm-12 col-md-6 offset-md-3">
-					<b-form-group>
-						<b-form-checkbox-group v-model="form.checked" required>
-							<!-- TODO $t -->
-							<b-form-checkbox value="privacy">
-								blablabla privacy
-							</b-form-checkbox>
-						</b-form-checkbox-group>
-					</b-form-group>
-				</div>
+			</div>
+			<hr />
+			<div class="d-flex justify-content-center">
+				<b-form-group style="max-width: 600px;">
+					<b-form-checkbox-group v-model="form.checked" required>
+						<!-- TODO $t -->
+						<b-form-checkbox value="privacy">
+							Preso atto dell'informativa <a target='_blank' href='https://www.garanteprivacy.it/documents/10160/0/Regolamento+UE+2016+679.+Arricchito+con+riferimenti+ai+Considerando+Aggiornato+alle+rettifiche+pubblicate+sulla+Gazzetta+Ufficiale++dell%27Unione+europea+127+del+23+maggio+2018'>Privacy art. 13 Reg. UE 679/2016</a> autorizzo il trattamento dei dati di cui al presente modulo di contatto per i fini e le modalità indicate nell'informativa
+						</b-form-checkbox>
+					</b-form-checkbox-group>
+				</b-form-group>
 			</div>
 			<div class="text-center mt-5">
 				<b-button type="submit" variant="primary" size="lg">Sì, voglio partecipare!</b-button>
@@ -144,11 +144,13 @@
 		        align="center"
 				:header="'Iscrizione terminata con successo!'"
 			>
-				<b-card-text>
-					Vi ringraziamo {{ form.assoc_name ? form.assoc_name : this.storagedAssocname }} per l'iscrizione, verrete tenuti aggiornati sull'andamento del progetto!
+				<b-card-text class="text-dark">
+					Vi ringraziamo <b>{{ form.assoc_name ? form.assoc_name : this.storagedAssocname }}</b> per l'iscrizione, verrete tenuti aggiornati sull'andamento del progetto!
 				</b-card-text>
+				<b-button @click="storageReset">
+					Iscrivi un'altra associazione
+				</b-button>
 			</b-card>
-
 		</template>
 
 	</section>
@@ -156,7 +158,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
@@ -187,6 +189,9 @@ const Component = Vue.extend({
 		}
 	},
 	computed: {
+		...mapGetters({
+			loading: 'getAwait',
+		}),
 		storagedAssocname() :string | null {
 			if(typeof window === 'undefined')
 				return null;
@@ -195,11 +200,36 @@ const Component = Vue.extend({
 	},
 	methods: {
 		...mapActions({
+			setLoading: 'setAwait',
 			subscribe: 'addSubscription',
 		}),
 		onFormSubmit() :void {
-			this.form_success=true;
-			localStorage.setItem('subscription-assocname', this.form.assoc_name);
+			this.setLoading([true, 'subscription']);
+			this.subscribe({
+				assoc_name: this.form.assoc_name,
+				assoc_website: this.form.assoc_website,
+				assoc_keywords: this.form.assoc_keywords,
+				assoc_logo: this.form.assoc_logo,
+				assoc_cv: this.form.assoc_cv,
+				ref_name: this.form.ref_name,
+				ref_email: this.form.ref_email,
+				ref_tel: this.form.ref_tel,
+			}).then(({ status, data }) => {
+				this.setLoading([false, 'subscription']);
+				if(status === 200){
+					this.form_success=true;
+					localStorage.setItem('subscription-assocname', this.form.assoc_name);
+				}else{
+					for(let i :number = data.length; i--; )
+						//@ts-ignore
+						this.$bvToast.toast(data[i], {
+							title: 'Errore',
+							autoHideDelay: 5000,
+							variant: 'danger'
+				        })
+				}
+
+			});
 		},
 		onFormReset() :void {
 			// Reset our form values
@@ -220,6 +250,8 @@ const Component = Vue.extend({
 		},
 		storageReset() :void {
 			localStorage.removeItem('subscription-assocname');
+			this.onFormReset();
+			this.form_success = false;
 		},
 	},
 	mounted(){

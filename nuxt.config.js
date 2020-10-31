@@ -5,7 +5,7 @@ export default {
 	env: {
 		baseUrl: process.env.BASE_URL || 'http://localhost:3000',
 		apiUrl: process.env.API_URL || 'localhost',
-		enviroment: process.env.ENVIROMENT || 'development',
+		enviroment: process.env.ENVIROMENT || 'production',
 	},
 
 	// Global page headers (https://go.nuxtjs.dev/config-head)

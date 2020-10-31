@@ -11,6 +11,12 @@
   "LazyForm": {
     "description": "Auto imported from components/Form.vue"
   },
+  "Info": {
+    "description": "Auto imported from components/Info.vue"
+  },
+  "LazyInfo": {
+    "description": "Auto imported from components/Info.vue"
+  },
   "Footer": {
     "description": "Auto imported from components/generic/Footer.vue"
   },
