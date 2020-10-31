@@ -2,7 +2,7 @@
 	<div id="landing-page">
 
 		<div class="heroPanel2 centered with-shadow customBorders1">
-			<img class="background" src="http://assets.guebbit.com/associazioni/images/wallpaper.jpg" alt="">
+			<img class="background" src="https://assets.guebbit.com/associazioni/images/wallpaper.jpg" alt="">
 		    <div class="panel-content">
 		        <div>
 		            <assoc-form/>
