@@ -15,27 +15,46 @@
 			</div>
 		</div>
 
+		<section-contacts />
+		
 		<section-info />
 
-		<section-contacts />
+		<section-assoc-list
+			:list="associations"
+		/>
+
 
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { mapGetters, mapActions } from 'vuex';
 
 import sectionContacts from '@/components/Contatti.vue';
 import sectionInfo from '@/components/Info.vue';
 import assocForm from '@/components/Form.vue';
+import sectionAssocList from '@/components/AssocList.vue';
+
+import { associationMap } from '@/interfaces';
 
 const Component = Vue.extend({
 	name: 'Landing-page',
+	async asyncData ({ params, error, payload, store }) {
+		if(payload)
+			return {
+				associations: payload,
+			};
+		return store.dispatch("getAssociations").then(() => {
+			return {
+				associations: store.getters["getAssociations"] as associationMap[]
+			};
+		});
+	},
 	components: {
 		assocForm,
 		sectionContacts,
 		sectionInfo,
+		sectionAssocList,
 	},
 });
 
@@ -56,8 +75,20 @@ export default Component;
 		svg{
 			fill: #fff;
 		}
+		.v-stepper__step__step{
+			margin-right: 0.5em;
+			&.primary{
+				background-color: $primary-color;
+				border-color: $primary-color;
+			}
+		}
 		&.with-shadow:after{
 			background: rgba(#000, 0.8);
+		}
+	}
+	@include media-breakpoint-down(md) {
+		.form-group{
+			margin-bottom: 0;
 		}
 	}
 }

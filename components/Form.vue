@@ -4,212 +4,164 @@
 		<p class="page-description text-center mb-50">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
 
 
-		<template>
-		  <v-stepper v-model="e1">
-		    <v-stepper-header>
-		      <v-stepper-step
-		        :complete="e1 > 1"
-		        step="1"
-		      >
-		        Name of step 1
-		      </v-stepper-step>
-
-		      <v-divider></v-divider>
-
-		      <v-stepper-step
-		        :complete="e1 > 2"
-		        step="2"
-		      >
-		        Name of step 2
-		      </v-stepper-step>
-
-		      <v-divider></v-divider>
-
-		      <v-stepper-step step="3">
-		        Name of step 3
-		      </v-stepper-step>
-		    </v-stepper-header>
-
-		    <v-stepper-items>
-		      <v-stepper-content step="1">
-		        <v-card
-		          class="mb-12"
-		          color="grey lighten-1"
-		          height="200px"
-		        ></v-card>
-
-		        <v-btn
-		          color="primary"
-		          @click="e1 = 2"
-		        >
-		          Continue
-		        </v-btn>
-
-		        <v-btn text>
-		          Cancel
-		        </v-btn>
-		      </v-stepper-content>
-
-		      <v-stepper-content step="2">
-		        <v-card
-		          class="mb-12"
-		          color="grey lighten-1"
-		          height="200px"
-		        ></v-card>
-
-		        <v-btn
-		          color="primary"
-		          @click="e1 = 3"
-		        >
-		          Continue
-		        </v-btn>
-
-		        <v-btn text>
-		          Cancel
-		        </v-btn>
-		      </v-stepper-content>
-
-		      <v-stepper-content step="3">
-		        <v-card
-		          class="mb-12"
-		          color="grey lighten-1"
-		          height="200px"
-		        ></v-card>
-
-		        <v-btn
-		          color="primary"
-		          @click="e1 = 1"
-		        >
-		          Continue
-		        </v-btn>
-
-		        <v-btn text>
-		          Cancel
-		        </v-btn>
-		      </v-stepper-content>
-		    </v-stepper-items>
-		  </v-stepper>
-		</template>
-
-		
 		<b-form
+			ref="subscriptionForm"
 			v-if="!form_success && showForm"
 			@submit.prevent="onFormSubmit"
 			@reset.prevent="onFormReset"
 		>
-			<div class="row">
-				<div class="col-12 col-md-6">
-					<b-form-group
-						label="Nome associazione"
-						label-for="form-input-assocname"
-						description="Nome completo ufficiale dell'associazione"
+			<v-stepper non-linear v-model="form_stepper">
+				<v-stepper-header>
+					<v-stepper-step
+						:complete="form_stepper > 1"
+						step="1"
+						editable
 					>
-						<b-form-input
-							id="form-input-assocname"
-							v-model="form.assoc_name"
-							required
-						/>
-					</b-form-group>
-				</div>
-				<div class="col-12 col-md-6">
-					<b-form-group
-						label="URL sito web"
-						label-for="form-input-assocwebsite"
-						description="Avete un sito web? (facoltativo)"
-					>
-						<b-form-input
-							id="form-input-assocwebsite"
-							v-model="form.assoc_website"
-						/>
-					</b-form-group>
-				</div>
+						Name of step 1
+					</v-stepper-step>
 
-				<div class="col-12 col-md-6">
-					<b-form-group
-						label="Parole chiave"
-						label-for="form-input-assockeywords"
-						description="Qualche parola chiave che identificano l'associazione o i suoi obbiettivi (facoltativo)"
+					<v-divider></v-divider>
+
+					<v-stepper-step
+						:complete="form_stepper > 2"
+						step="2"
+						editable
 					>
-						<b-form-input
-							id="form-input-assockeywords"
-							v-model="form.assoc_keywords"
-						/>
-					</b-form-group>
-				</div>
-				<div class="col-6 col-md-3">
-					<b-form-group
-						label="Logo associazione"
-						label-for="form-input-assoclogo"
-						description="Mandami il logo. Preferibilmente in vettoriale"
-					>
-						<b-form-file
-							id="form-input-assoclogo"
-							v-model="form.assoc_logo"
-							:state="Boolean(form.assoc_logo)"
-							placeholder="..."
-							drop-placeholder="Lancia qui il logo!"
-						/>
-					</b-form-group>
-				</div>
-				<div class="col-6 col-md-3">
-					<b-form-group
-						label="CV associazione"
-						label-for="form-input-assoccv"
-						description="Datemi qualche dettaglio di voi (facoltativo)"
-					>
-						<b-form-file
-							id="form-input-assoccv"
-							v-model="form.assoc_cv"
-							:state="Boolean(form.assoc_cv)"
-							placeholder="..."
-							drop-placeholder="Lancia qui il documento!"
-						/>
-					</b-form-group>
-				</div>
-			</div>
+						Name of step 2
+					</v-stepper-step>
+				</v-stepper-header>
+
+				<v-stepper-items>
+					<v-stepper-content step="1">
+
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<b-form-group
+									label="Nome associazione"
+									label-for="form-input-assocname"
+									description="Nome completo ufficiale dell'associazione"
+								>
+									<b-form-input
+										id="form-input-assocname"
+										v-model="form.assoc_name"
+										required
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-12 col-md-6">
+								<b-form-group
+									label="URL sito web"
+									label-for="form-input-assocwebsite"
+									description="Avete un sito web? (facoltativo)"
+								>
+									<b-form-input
+										id="form-input-assocwebsite"
+										v-model="form.assoc_website"
+									/>
+								</b-form-group>
+							</div>
+
+							<div class="col-12 col-md-6">
+								<b-form-group
+									label="Parole chiave"
+									label-for="form-input-assockeywords"
+									description="Qualche parola chiave che identificano l'associazione o i suoi obbiettivi (facoltativo)"
+								>
+									<b-form-input
+										id="form-input-assockeywords"
+										v-model="form.assoc_keywords"
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-6 col-md-3">
+								<b-form-group
+									label="Logo associazione"
+									label-for="form-input-assoclogo"
+									description="Mandami il logo. Preferibilmente in vettoriale"
+								>
+									<b-form-file
+										id="form-input-assoclogo"
+										v-model="form.assoc_logo"
+										:state="Boolean(form.assoc_logo)"
+										placeholder="..."
+										drop-placeholder="Lancia qui il logo!"
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-6 col-md-3">
+								<b-form-group
+									label="CV associazione"
+									label-for="form-input-assoccv"
+									description="Datemi qualche dettaglio di voi (facoltativo)"
+								>
+									<b-form-file
+										id="form-input-assoccv"
+										v-model="form.assoc_cv"
+										:state="Boolean(form.assoc_cv)"
+										placeholder="..."
+										drop-placeholder="Lancia qui il documento!"
+									/>
+								</b-form-group>
+							</div>
+						</div>
+						<b-button
+							variant="primary"
+							class="mt-5"
+							@click="form_stepper = 2"
+						>
+							Inserisci un referente
+						</b-button>
+					</v-stepper-content>
+
+					<v-stepper-content step="2">
+
+						<div class="row">
+							<div class="col-12 col-md-6 col-lg-6 offset-lg-3">
+								<b-form-group
+									label="Nome referente"
+									label-for="form-input-refname"
+									description="Un portavoce dell'associazione"
+								>
+									<b-form-input
+										id="form-input-refname"
+										v-model="form.ref_name"
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-12 col-md-6 col-lg-6">
+								<b-form-group
+									label="Mail del referente"
+									label-for="form-input-refemail"
+									description="Una mail di contatto"
+								>
+									<b-form-input
+										id="form-input-refemail"
+										v-model="form.ref_email"
+										type="email"
+										required
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-12 col-md-6 col-lg-6">
+								<b-form-group
+									label="Telefono del referente"
+									label-for="form-input-assoctel"
+									description="Contatto telefonico (facoltativo)"
+								>
+									<b-form-input
+										id="form-input-assoctel"
+										v-model="form.ref_tel"
+										type="tel"
+									/>
+								</b-form-group>
+							</div>
+						</div>
+					</v-stepper-content>
+				</v-stepper-items>
+			</v-stepper>
+
 			<hr />
-			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
-					<b-form-group
-						label="Nome referente"
-						label-for="form-input-refname"
-						description="Un portavoce dell'associazione"
-					>
-						<b-form-input
-							id="form-input-refname"
-							v-model="form.ref_name"
-						/>
-					</b-form-group>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<b-form-group
-						label="Mail del referente"
-						label-for="form-input-refemail"
-						description="Un portavoce dell'associazione"
-					>
-						<b-form-input
-							id="form-input-refemail"
-							v-model="form.ref_email"
-							type="email"
-							required
-						/>
-					</b-form-group>
-				</div>
-				<div class="col-12 col-md-6 col-lg-4">
-					<b-form-group
-						label="Telefono del referente"
-						label-for="form-input-assoctel"
-						description="Contatto telefonico (facoltativo)"
-					>
-						<b-form-input
-							id="form-input-assoctel"
-							v-model="form.ref_tel"
-							type="tel"
-						/>
-					</b-form-group>
-				</div>
-			</div>
-			<hr />
+
 			<div class="d-flex justify-content-center">
 				<b-form-group style="max-width: 600px;">
 					<b-form-checkbox-group v-model="form.checked" required>
@@ -220,8 +172,13 @@
 					</b-form-checkbox-group>
 				</b-form-group>
 			</div>
+
+			<hr />
+
 			<div class="text-center mt-5">
-				<b-button type="submit" variant="primary" size="lg">Sì, voglio partecipare!</b-button>
+				<b-button @click="beforeSubmit" type="submit" variant="primary" size="lg">
+					Sì, voglio partecipare!
+				</b-button>
 			</div>
 		</b-form>
 
@@ -276,7 +233,7 @@ const Component = Vue.extend({
 				ref_tel: '' as string,
 				checked: [] as boolean[],
 			},
-			e1: 1 as number,
+			form_stepper: 1 as number,
 		}
 	},
 	computed: {
@@ -292,8 +249,13 @@ const Component = Vue.extend({
 	methods: {
 		...mapActions({
 			setLoading: 'setAwait',
-			subscribe: 'addSubscription',
+			subscribe: 'addAssociation',
 		}),
+		beforeSubmit() :void {
+			//TODO event.prevent in caso di errore? Lacking documentazione
+			//TODO sarebbe meglio un focus dinamico (oppure un sistema di warning in più)
+			this.form_stepper = 1;
+		},
 		onFormSubmit() :void {
 			this.setLoading([true, 'subscription']);
 			this.subscribe({

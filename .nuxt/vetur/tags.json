@@ -1,4 +1,10 @@
 {
+  "AssocList": {
+    "description": "Auto imported from components/AssocList.vue"
+  },
+  "LazyAssocList": {
+    "description": "Auto imported from components/AssocList.vue"
+  },
   "Contatti": {
     "description": "Auto imported from components/Contatti.vue"
   },

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { subscriptionsMap } from '@/interfaces';
+import { subscriptionMap } from '@/interfaces';
 
 //TODO guebbit
 const toFormData = (obj :any, form :FormData | null = null, namespace :string | null = null) => {
@@ -30,7 +30,7 @@ export default{
 		commit("setAwait", [ wait, name ]);
 	},
 
-	addSubscription: async ({} :any,  subscriptionData: subscriptionsMap ) :Promise<any> => {
+	addAssociation: async ({} :any,  subscriptionData: subscriptionMap ) :Promise<any> => {
 		return axios.post(process.env.apiUrl+'api/associations', toFormData(subscriptionData))
 			.then(({ data, status } :AxiosResponse) => {
 				console.log("setSubscription OK", data);
@@ -48,5 +48,13 @@ export default{
 					data: Object.values(response.data.errors),
 				};
 			})
+	},
+
+	getAssociations: async ({ commit } :any ) :Promise<any> => {
+		return axios.get(process.env.apiUrl+'api/associations').then(({ data } :AxiosResponse ) => {
+			for(let i :number = data.length; i--; )
+				commit("setAssociation", data[i]);
+			return data;
+		})
 	},
 };

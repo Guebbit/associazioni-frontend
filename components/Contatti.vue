@@ -1,5 +1,5 @@
 <template>
-	<section id="contacts" class="contact-section container d-flex justify-content-center flex-column mt-100">
+	<section id="contacts" class="contact-section container d-flex justify-content-center flex-column mt-100 mb-50">
 		<div class="contact-info text-center">
 			<h2 class="page-title mb-30">
 				<span class="highlight1 white-text">Contatti</span>
