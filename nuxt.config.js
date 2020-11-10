@@ -1,3 +1,5 @@
+import colors from 'vuetify/lib/util/colors';
+
 export default {
 	// Target (https://go.nuxtjs.dev/config-target)
 	target: 'static',
@@ -43,10 +45,9 @@ export default {
 		}]
 		*/
 		['@nuxtjs/vuetify', {
-			treeShake: true
+			treeShake: true,
 		}],
 	],
-
 
 	/*
 	** Nuxt.js modules

@@ -14,11 +14,12 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_plugin_32227db0 from 'nuxt_plugin_plugin_32227db0' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_workbox_6809ffa7 from 'nuxt_plugin_workbox_6809ffa7' // Source: .\\workbox.js (mode: 'client')
 import nuxt_plugin_bootstrapvue_d7f5d70c from 'nuxt_plugin_bootstrapvue_d7f5d70c' // Source: .\\bootstrap-vue.js (mode: 'all')
 import nuxt_plugin_plugin_56a66868 from 'nuxt_plugin_plugin_56a66868' // Source: .\\vuetify\\plugin.js (mode: 'all')
 import nuxt_plugin_pluginrouting_318a950e from 'nuxt_plugin_pluginrouting_318a950e' // Source: .\\nuxt-i18n\\plugin.routing.js (mode: 'all')
 import nuxt_plugin_pluginmain_8bb1bdbe from 'nuxt_plugin_pluginmain_8bb1bdbe' // Source: .\\nuxt-i18n\\plugin.main.js (mode: 'all')
+import nuxt_plugin_workbox_6809ffa7 from 'nuxt_plugin_workbox_6809ffa7' // Source: .\\workbox.js (mode: 'client')
+import nuxt_plugin_meta_6f359f66 from 'nuxt_plugin_meta_6f359f66' // Source: .\\pwa\\meta.js (mode: 'all')
 import nuxt_plugin_axios_4ba0b14b from 'nuxt_plugin_axios_4ba0b14b' // Source: .\\axios.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -46,6 +47,13 @@ Vue.component('NChild', NuxtChild)
 // Component: <Nuxt>
 Vue.component(Nuxt.name, Nuxt)
 
+Object.defineProperty(Vue.prototype, '$nuxt', {
+  get() {
+    return this.$root.$options.$nuxt
+  },
+  configurable: true
+})
+
 Vue.use(Meta, {"keyName":"head","attribute":"data-n-head","ssrAttribute":"data-n-head-ssr","tagIDKeyName":"hid"})
 
 const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
@@ -72,7 +80,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"associazioni default title","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"http-equiv":"x-ua-compatible","content":"ie=edge"},{"name":"msapplication-tap-highlight","content":"no"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"ecsicarpi"},{"hid":"description","name":"description","content":"This README would normally document whatever steps are necessary to get your application up and running."},{"hid":"theme-color","name":"theme-color","content":"black"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"ecsicarpi"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"ecsicarpi"},{"hid":"og:description","name":"og:description","property":"og:description","content":"This README would normally document whatever steps are necessary to get your application up and running."}],"script":[],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.2818d15a.json"}],"style":[],"htmlAttrs":{"lang":"en"}},
+    head: {"title":"associazioni default title","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"http-equiv":"x-ua-compatible","content":"ie=edge"},{"name":"msapplication-tap-highlight","content":"no"}],"script":[],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[]},
 
     store,
     router,
@@ -205,10 +213,6 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_plugin_32227db0(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_workbox_6809ffa7 === 'function') {
-    await nuxt_plugin_workbox_6809ffa7(app.context, inject)
-  }
-
   if (typeof nuxt_plugin_bootstrapvue_d7f5d70c === 'function') {
     await nuxt_plugin_bootstrapvue_d7f5d70c(app.context, inject)
   }
@@ -223,6 +227,14 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_pluginmain_8bb1bdbe === 'function') {
     await nuxt_plugin_pluginmain_8bb1bdbe(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_workbox_6809ffa7 === 'function') {
+    await nuxt_plugin_workbox_6809ffa7(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_meta_6f359f66 === 'function') {
+    await nuxt_plugin_meta_6f359f66(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_4ba0b14b === 'function') {

@@ -2,8 +2,6 @@
 	<section class="subscription-section container d-flex justify-content-center flex-column mb-50 mt-50">
 		<h3 class="page-subtitle text-primary text-center">Associazioni di Carpi</h3>
 		<p class="page-description text-center mb-50">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
-
-
 		<b-form
 			ref="subscriptionForm"
 			v-if="!form_success && showForm"
@@ -11,25 +9,6 @@
 			@reset.prevent="onFormReset"
 		>
 			<v-stepper non-linear v-model="form_stepper">
-				<v-stepper-header>
-					<v-stepper-step
-						:complete="form_stepper > 1"
-						step="1"
-						editable
-					>
-						Name of step 1
-					</v-stepper-step>
-
-					<v-divider></v-divider>
-
-					<v-stepper-step
-						:complete="form_stepper > 2"
-						step="2"
-						editable
-					>
-						Name of step 2
-					</v-stepper-step>
-				</v-stepper-header>
 
 				<v-stepper-items>
 					<v-stepper-content step="1">
@@ -37,7 +16,7 @@
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<b-form-group
-									label="Nome associazione"
+									label="* Nome associazione"
 									label-for="form-input-assocname"
 									description="Nome completo ufficiale dell'associazione"
 								>
@@ -50,26 +29,28 @@
 							</div>
 							<div class="col-12 col-md-6">
 								<b-form-group
-									label="URL sito web"
-									label-for="form-input-assocwebsite"
-									description="Avete un sito web? (facoltativo)"
+									label="* Mail dell'associazione"
+									label-for="form-input-assocemail"
+									description="Una mail di contatto"
 								>
 									<b-form-input
-										id="form-input-assocwebsite"
-										v-model="form.assoc_website"
+										id="form-input-assocemail"
+										v-model="form.assoc_email"
+										type="email"
+										required
 									/>
 								</b-form-group>
 							</div>
-
 							<div class="col-12 col-md-6">
 								<b-form-group
-									label="Parole chiave"
-									label-for="form-input-assockeywords"
-									description="Qualche parola chiave che identificano l'associazione o i suoi obbiettivi (facoltativo)"
+									label="Telefono dell'associazione"
+									label-for="form-input-assoctel"
+									description="Per chiamata, whatsapp, etc (facoltativo)"
 								>
 									<b-form-input
-										id="form-input-assockeywords"
-										v-model="form.assoc_keywords"
+										id="form-input-assoctel"
+										v-model="form.assoc_tel"
+										type="tel"
 									/>
 								</b-form-group>
 							</div>
@@ -77,7 +58,7 @@
 								<b-form-group
 									label="Logo associazione"
 									label-for="form-input-assoclogo"
-									description="Mandami il logo. Preferibilmente in vettoriale"
+									description="Mandami il logo. Preferibilmente in vettoriale (facoltativo)"
 								>
 									<b-form-file
 										id="form-input-assoclogo"
@@ -109,11 +90,64 @@
 							class="mt-5"
 							@click="form_stepper = 2"
 						>
+							Inserisci qualche dettaglio in più
+						</b-button>
+					</v-stepper-content>
+
+
+					<v-stepper-content step="2">
+
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<b-form-group
+									label="URL sito web"
+									label-for="form-input-assocwebsite"
+									description="Avete un sito web? (facoltativo)"
+								>
+									<b-form-input
+										id="form-input-assocwebsite"
+										v-model="form.assoc_website"
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-12 col-md-6">
+								<b-form-group
+									label="Parole chiave"
+									label-for="form-input-assockeywords"
+									description="Qualche parola chiave che identificano l'associazione o i suoi obbiettivi (facoltativo)"
+								>
+									<b-form-input
+										id="form-input-assockeywords"
+										v-model="form.assoc_keywords"
+									/>
+								</b-form-group>
+							</div>
+							<div class="col-12 col-md-12">
+								<b-form-group
+									label="Descrizione dell'associazione"
+									label-for="form-input-assoclogo"
+									description="Diteci qualcosa di voi, in breve (facoltativo)"
+								>
+									<b-form-textarea
+										id="form-textarea-description"
+										v-model="form.assoc_bio"
+										:state="form.assoc_bio > 100"
+										rows="3"
+										max-rows="6"
+									/>
+								</b-form-group>
+							</div>
+						</div>
+						<b-button
+							variant="primary"
+							class="mt-5"
+							@click="form_stepper = 3"
+						>
 							Inserisci un referente
 						</b-button>
 					</v-stepper-content>
 
-					<v-stepper-content step="2">
+					<v-stepper-content step="3">
 
 						<div class="row">
 							<div class="col-12 col-md-6 col-lg-6 offset-lg-3">
@@ -138,7 +172,6 @@
 										id="form-input-refemail"
 										v-model="form.ref_email"
 										type="email"
-										required
 									/>
 								</b-form-group>
 							</div>
@@ -156,6 +189,14 @@
 								</b-form-group>
 							</div>
 						</div>
+						<b-button
+							variant="primary"
+							class="mt-5"
+							@click="form_stepper = 1"
+						>
+							Torna indietro
+						</b-button>
+
 					</v-stepper-content>
 				</v-stepper-items>
 			</v-stepper>
@@ -224,8 +265,11 @@ const Component = Vue.extend({
 			form_success: false as boolean,
 			form: {
 				assoc_name: '' as string,
+				assoc_email: '' as string,
+				assoc_tel: '' as string,
 				assoc_website: '' as string,
 				assoc_keywords: '' as string,
+				assoc_bio: '' as string,
 				assoc_logo: null as FileList | null,
 				assoc_cv: null as FileList | null,
 				ref_name: '' as string,
@@ -260,8 +304,11 @@ const Component = Vue.extend({
 			this.setLoading([true, 'subscription']);
 			this.subscribe({
 				assoc_name: this.form.assoc_name,
+				assoc_email: this.form.assoc_email,
+				assoc_tel: this.form.assoc_tel,
 				assoc_website: this.form.assoc_website,
 				assoc_keywords: this.form.assoc_keywords,
+				assoc_bio: this.form.assoc_bio,
 				assoc_logo: this.form.assoc_logo,
 				assoc_cv: this.form.assoc_cv,
 				ref_name: this.form.ref_name,
@@ -287,8 +334,11 @@ const Component = Vue.extend({
 		onFormReset() :void {
 			// Reset our form values
 			this.form.assoc_name = '';
+			this.form.assoc_email = '';
+			this.form.assoc_tel = '';
 			this.form.assoc_website = '';
 			this.form.assoc_keywords = '';
+			this.form.assoc_bio = '';
 			this.form.assoc_logo = null;
 			this.form.assoc_cv = null;
 			this.form.ref_name = '';

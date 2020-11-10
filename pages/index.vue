@@ -16,7 +16,7 @@
 		</div>
 
 		<section-contacts />
-		
+
 		<section-info />
 
 		<section-assoc-list
@@ -75,12 +75,9 @@ export default Component;
 		svg{
 			fill: #fff;
 		}
-		.v-stepper__step__step{
-			margin-right: 0.5em;
-			&.primary{
-				background-color: $primary-color;
-				border-color: $primary-color;
-			}
+		.v-stepper{
+			background: transparent !important;
+			box-shadow: none;
 		}
 		&.with-shadow:after{
 			background: rgba(#000, 0.8);

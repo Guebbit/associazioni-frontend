@@ -1,7 +1,10 @@
 export interface subscriptionMap {
 	assoc_name :string,
+	assoc_email :string,
+	assoc_tel :string,
 	assoc_website :string,
 	assoc_keywords :string,
+	assoc_bio :string,
 	assoc_logo? :FileList,
 	assoc_cv? :FileList,
 	ref_name :string,
