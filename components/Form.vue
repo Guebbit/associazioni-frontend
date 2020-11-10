@@ -3,7 +3,6 @@
 		<h3 class="page-subtitle text-primary text-center">Associazioni di Carpi</h3>
 		<p class="page-description text-center mb-50">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
 		<b-form
-			ref="subscriptionForm"
 			v-if="!form_success && showForm"
 			@submit.prevent="onFormSubmit"
 			@reset.prevent="onFormReset"
@@ -11,8 +10,8 @@
 			<v-stepper non-linear v-model="form_stepper">
 
 				<v-stepper-items>
-					<v-stepper-content step="1">
 
+					<v-stepper-content step="1">
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<b-form-group
@@ -85,18 +84,27 @@
 								</b-form-group>
 							</div>
 						</div>
-						<b-button
-							variant="primary"
-							class="mt-5"
-							@click="form_stepper = 2"
-						>
-							Inserisci qualche dettaglio in più
-						</b-button>
+						<div class="d-flex justify-content-between flex-wrap mt-3">
+							<b-button
+								variant="primary"
+								class="mb-3"
+								@click="form_stepper = 2"
+							>
+								Inserisci qualche dettaglio in più
+								<font-awesome-icon class="ml-3" :icon="['fas', 'forward']" />
+							</b-button>
+							<b-button
+								variant="primary"
+								class="mb-3"
+								@click="scrollToConfirm"
+							>
+								Iscrivimi!
+								<font-awesome-icon class="ml-3" :icon="['fas', 'check']" />
+							</b-button>
+						</div>
 					</v-stepper-content>
 
-
 					<v-stepper-content step="2">
-
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<b-form-group
@@ -131,24 +139,34 @@
 									<b-form-textarea
 										id="form-textarea-description"
 										v-model="form.assoc_bio"
-										:state="form.assoc_bio > 100"
+										:state="form.assoc_bio.length < 100"
 										rows="3"
 										max-rows="6"
 									/>
 								</b-form-group>
 							</div>
 						</div>
-						<b-button
-							variant="primary"
-							class="mt-5"
-							@click="form_stepper = 3"
-						>
-							Inserisci un referente
-						</b-button>
+						<div class="d-flex justify-content-between flex-wrap mt-3">
+							<b-button
+								variant="primary"
+								class="mb-3"
+								@click="form_stepper = 3"
+							>
+								Inserisci un referente
+								<font-awesome-icon class="ml-3" :icon="['fas', 'forward']" />
+							</b-button>
+							<b-button
+								variant="primary"
+								class="mb-3"
+								@click="scrollToConfirm"
+							>
+								Iscrivimi!
+								<font-awesome-icon class="ml-3" :icon="['fas', 'check']" />
+							</b-button>
+						</div>
 					</v-stepper-content>
 
 					<v-stepper-content step="3">
-
 						<div class="row">
 							<div class="col-12 col-md-6 col-lg-6 offset-lg-3">
 								<b-form-group
@@ -189,13 +207,24 @@
 								</b-form-group>
 							</div>
 						</div>
-						<b-button
-							variant="primary"
-							class="mt-5"
-							@click="form_stepper = 1"
-						>
-							Torna indietro
-						</b-button>
+						<div class="d-flex justify-content-between flex-wrap mt-3">
+							<b-button
+								variant="primary"
+								class="mb-3"
+								@click="form_stepper = 1"
+							>
+								Torna indietro
+								<font-awesome-icon class="ml-3" :icon="['fas', 'backward']" />
+							</b-button>
+							<b-button
+								variant="primary"
+								class="mb-3"
+								@click="scrollToConfirm"
+							>
+								Iscrivimi!
+								<font-awesome-icon class="ml-3" :icon="['fas', 'check']" />
+							</b-button>
+						</div>
 
 					</v-stepper-content>
 				</v-stepper-items>
@@ -217,7 +246,7 @@
 			<hr />
 
 			<div class="text-center mt-5">
-				<b-button @click="beforeSubmit" type="submit" variant="primary" size="lg">
+				<b-button ref="confirmButton" @click="beforeSubmit" type="submit" variant="primary" size="lg">
 					Sì, voglio partecipare!
 				</b-button>
 			</div>
@@ -245,16 +274,22 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import { mapActions, mapGetters } from 'vuex';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faVideo);
+library.add(faCheck, faForward, faBackward);
 
-const Component = Vue.extend({
+interface vueRefsMap {
+	$refs: {
+		confirmButton :HTMLButtonElement,
+	}
+}
+
+const Component = (Vue as VueConstructor<Vue & vueRefsMap>).extend({
 	name: 'assoc-subscription',
 	components: {
 		FontAwesomeIcon,
@@ -356,6 +391,16 @@ const Component = Vue.extend({
 			this.onFormReset();
 			this.form_success = false;
 		},
+
+		scrollToConfirm() :void {
+			if(!this.$refs.confirmButton)
+				return;
+			this.$refs.confirmButton.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+				inline: 'center'
+			});
+		}
 	},
 	mounted(){
 		// l'utente ha già pagato in una sessione precedente

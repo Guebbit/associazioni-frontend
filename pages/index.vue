@@ -17,12 +17,12 @@
 
 		<section-contacts />
 
-		<section-info />
-
 		<section-assoc-list
+			v-if="associations.length > 0"
 			:list="associations"
 		/>
 
+		<section-info />
 
 	</div>
 </template>
