@@ -1,5 +1,5 @@
 <template>
-	<section id="partners" class="contact-section container d-flex justify-content-center flex-column mt-100">
+	<section id="partners" class="partner-section container d-flex justify-content-center flex-column mt-100">
 		<h2 class="page-title mb-50 text-center">
 			<span class="highlight1 white-text">Associazioni interessate</span>
 		</h2>
@@ -12,7 +12,7 @@
 					:alt="Object.values(assoc.media)[0].alt"
 					:title="Object.values(assoc.media)[0].title"
 				/>
-				<div class="card-body">
+				<div class="card-body d-flex justify-content-around flex-wrap mt-2">
 					<h5 class="card-title">{{ assoc.name }}</h5>
 					<b-button v-if="assoc.website" :href="assoc.website" class="card-link">Website</b-button>
 				</div>

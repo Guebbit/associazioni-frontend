@@ -1,6 +1,8 @@
 <template>
 	<section class="subscription-section container d-flex justify-content-center flex-column mb-50 mt-50">
-		<h3 class="page-subtitle text-primary text-center">Associazioni di Carpi</h3>
+		<h1 class="page-title mb-3 text-center">
+			<span class="highlight1">Associazioni di Carpi</span>
+		</h1>
 		<p class="page-description text-center mb-50">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
 		<b-form
 			v-if="!form_success && showForm"
@@ -245,11 +247,24 @@
 
 			<hr />
 
-			<div class="text-center mt-5">
+
+			<div class="d-flex justify-content-center align-items-center flex-wrap">
+				<div class="cssArrow1 to-right mr-5">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
 				<b-button ref="confirmButton" @click="beforeSubmit" type="submit" variant="primary" size="lg">
 					Sì, voglio partecipare!
 				</b-button>
+				<div class="cssArrow1 to-left ml-5">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
 			</div>
+
+
 		</b-form>
 
 		<template v-if="form_success">
@@ -263,6 +278,9 @@
 			>
 				<b-card-text class="text-dark">
 					Vi ringraziamo <b>{{ form.assoc_name ? form.assoc_name : this.storagedAssocname }}</b> per l'iscrizione, verrete tenuti aggiornati sull'andamento del progetto!
+					<br />
+					<br />
+					Il vostro nome, sito e logo saranno pubblici su questo sito dopo un veloce controllo.
 				</b-card-text>
 				<b-button @click="storageReset">
 					Iscrivi un'altra associazione
