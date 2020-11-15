@@ -102,17 +102,26 @@ export default Component;
 			background: rgba(#000, 0.8);
 		}
 	}
-
-	.blog-section{
-		background-color: rgba(#fff, 0.8);
+	.page-title{
+		@include media-breakpoint-down(sm) {
+			font-size: 1.5rem;
+		}
 	}
 
-	form{
-		.form-group{
-			@include media-breakpoint-down(md) {
+	.subscription-section{
+		@include media-breakpoint-down(md) {
+			.form-group{
 				margin-bottom: 0;
 			}
 		}
+		@include media-breakpoint-down(sm) {
+			.page-title{
+				font-size: 2rem;
+			}
+		}
+	}
+	.blog-section{
+		background-color: rgba(#fff, 0.8);
 	}
 
 	.partner-section{

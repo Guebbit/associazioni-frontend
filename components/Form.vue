@@ -248,7 +248,7 @@
 			<hr />
 
 
-			<div class="d-flex justify-content-center align-items-center flex-wrap">
+			<div class="d-flex justify-content-center align-items-center">
 				<div class="cssArrow1 to-right mr-5">
 					<div></div>
 					<div></div>
