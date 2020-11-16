@@ -32,20 +32,30 @@ export default{
 
 	addAssociation: async ({} :any,  subscriptionData: subscriptionMap ) :Promise<any> => {
 		return axios.post(process.env.apiUrl+'api/associations', toFormData(subscriptionData))
-			.then(({ data, status } :AxiosResponse) => {
+			.then(({ data, status } :AxiosResponse) :any => {
 				console.log("setSubscription OK", data);
 				return {
 					status,
 					data,
 				};
 			})
-			.catch(({ response }) => {
-				if(!response)
-					return;
-				console.log("setSubscription ERROR", response);
+			.catch(({ response, request }) :any => {
+				//console.log("setSubscription ERROR", response, request);
+				if(response)
+					return {
+						status: response.status,
+						data: Object.values(response.data.errors),
+					};
+				// client never received a response, or request never left
+				if(request)
+					return {
+						status: 500,
+						data: ['unknown'],
+					};
+				// anything else
 				return {
-					status: response.status,
-					data: Object.values(response.data.errors),
+					status: 500,
+					data: ['unknown'],
 				};
 			})
 	},
