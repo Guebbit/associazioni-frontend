@@ -82,10 +82,10 @@ export default Component;
 
 <style lang="scss">
 @import '@/assets/scss/core';
-@import '@/assets/scss/components/socialbutton1';
 @import '@/assets/scss/components/blogpage2';
 @import '@/assets/scss/components/customborders1';
 @import '@/assets/scss/components/cssarrow1';
+@import '@/assets/scss/components/teamcard1';
 
 #landing-page{
 	.heroPanel2{
@@ -124,6 +124,12 @@ export default Component;
 		background-color: rgba(#fff, 0.8);
 	}
 
+	.contact-section{
+		.teamCard1{
+			width: 350px;
+		}
+	}
+
 	.partner-section{
 		.card-columns{
 			@include media-breakpoint-down(sm) {
@@ -135,6 +141,11 @@ export default Component;
 				column-gap: 1.25rem;
 				orphans: 1;
 				widows: 1;
+			}
+		}
+		.card{
+			img{
+				padding: 24px;
 			}
 		}
 	}

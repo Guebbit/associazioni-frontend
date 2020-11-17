@@ -14,7 +14,7 @@
 				/>
 				<div class="card-body d-flex justify-content-around flex-wrap mt-2">
 					<h5 class="card-title">{{ assoc.name }}</h5>
-					<b-button v-if="assoc.website" :href="assoc.website" class="card-link">Website</b-button>
+					<b-button v-if="assoc.website" :href="assoc.website" target="_blank" class="card-link">Website</b-button>
 				</div>
 			</div>
 		</b-card-group>

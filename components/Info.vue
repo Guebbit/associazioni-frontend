@@ -28,7 +28,7 @@
 			</div>
 
 			<div class="blog-section with-border">
-				<h4 class="blog-title">Uniamo le forze</h4>
+				<h4 class="blog-title">Uniamo le <b>forze</b></h4>
 				<p>
 					Non so se abbiate mai riscontrato lo stesso problema, ma a tal proposito, che ne pensate se realizzassimo
 					una rete con un calendario unico? In modo da poter non solo condividere gli eventi, ma anche eventualmente
@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="blog-section with-border">
-				<h4 class="blog-title">Una saggezza condivisa</h4>
+				<h4 class="blog-title">Una <b>saggezza</b> condivisa</h4>
 				<p>
 					Non solo: questo sarebbe anche un modo per rendere più visibili i bandi, le sedi in giro per la città e le frazioni e le capacità e i servizi di ognuno di noi.
 					Questo vuol dire rendere più visibili artisti, fotografi, videomaker, web developer, in modo da realizzare contenuti sempre più interessanti.
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="blog-section with-border">
-				<h4 class="blog-title">Il coraggio di farsi avanti</h4>
+				<h4 class="blog-title">Il <b>coraggio</b> di farsi avanti</h4>
 				<p>
 					In questa struttura vorrei inserire alcuni dati delle associazioni in modo da renderle più vicine,
 					il tutto poi verrà messo su un sito disponibile a tutti i cittadini e in futuro si potrà anche pensare di fare una web app.
