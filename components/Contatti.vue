@@ -6,7 +6,7 @@
 
 		<div class="d-flex justify-content-center flex-wrap">
 
-			<a v-for="member in members" class="teamCard1" href="#">
+			<div v-for="member in members" class="teamCard1">
 				<div class="card-image">
 					<span><img :src="member.avatar" alt=""></span>
 				</div>
@@ -20,6 +20,7 @@
 					<b-button
 						class="justify-content-center align-items-between m-1"
 						:href="'mailto:'+member.email" target="_blank"
+						size="sm"
 					>
 						<font-awesome-icon class="mr-2" :icon="['fas', 'envelope']" />
 						{{ member.email }}
@@ -27,12 +28,14 @@
 					<b-button
 						class="justify-content-center align-items-between m-1"
 						:href="'tel:'+member.tel" target="_blank"
+						size="sm"
 					>
 						<font-awesome-icon class="mr-2" :icon="['fab', 'whatsapp']" />
 						{{ member.tel }}
 					</b-button>
 				</div>
-			</a>
+			</div>
+			
 		</div>
 	</section>
 </template>

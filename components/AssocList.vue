@@ -3,8 +3,8 @@
 		<h2 class="page-title mb-50 text-center">
 			<span class="highlight1 white-text">Associazioni interessate</span>
 		</h2>
-		<b-card-group columns>
-			<div v-for="assoc in list" class="card">
+		<div class="assoc-masonry">
+			<div v-for="assoc in list" class="card text-center">
 				<b-img
 					v-if="assoc.hasOwnProperty('media') && Object.values(assoc.media).length > 0"
 					class="img-fluid card-img-top"
@@ -12,12 +12,12 @@
 					:alt="Object.values(assoc.media)[0].alt"
 					:title="Object.values(assoc.media)[0].title"
 				/>
-				<div class="card-body d-flex justify-content-around flex-wrap mt-2">
+				<div class="card-body">
 					<h5 class="card-title">{{ assoc.name }}</h5>
-					<b-button v-if="assoc.website" :href="assoc.website" target="_blank" class="card-link">Website</b-button>
+					<b-button v-if="assoc.website" :href="assoc.website" target="_blank" class="card-link m-3">Website</b-button>
 				</div>
 			</div>
-		</b-card-group>
+		</div>
 
 	</section>
 </template>

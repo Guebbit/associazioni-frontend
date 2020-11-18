@@ -3,7 +3,7 @@
 		<h1 class="page-title mb-3 text-center">
 			<span class="highlight1">Associazioni di Carpi</span>
 		</h1>
-		<p class="page-description text-center mb-50">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
+		<p class="page-description text-center">Iscrivi la tua associazione. Affrontiamo un nuovo mondo con nuovi mezzi</p>
 		<b-form
 			v-if="!form_success && showForm"
 			@submit.prevent="onFormSubmit"
@@ -57,7 +57,7 @@
 							</div>
 							<div class="col-6 col-md-3">
 								<b-form-group
-									label="Logo associazione"
+									label="Logo"
 									label-for="form-input-assoclogo"
 									description="Mandami il logo. Preferibilmente in vettoriale (facoltativo)"
 								>
@@ -72,9 +72,9 @@
 							</div>
 							<div class="col-6 col-md-3">
 								<b-form-group
-									label="CV associazione"
+									label="CV"
 									label-for="form-input-assoccv"
-									description="Datemi qualche dettaglio di voi (facoltativo)"
+									description="Curriculum dell'associazione (facoltativo)"
 								>
 									<b-form-file
 										id="form-input-assoccv"
@@ -92,8 +92,10 @@
 								class="mb-3"
 								@click="form_stepper = 2"
 							>
-								Inserisci qualche dettaglio in più
-								<font-awesome-icon class="ml-3" :icon="['fas', 'forward']" />
+								<small>
+									Inserisci qualche dettaglio in più
+									<font-awesome-icon class="ml-3" :icon="['fas', 'forward']" />
+								</small>
 							</b-button>
 							<b-button
 								variant="primary"
@@ -269,6 +271,7 @@
 
 		<template v-if="form_success">
 			<b-card
+				ref="subscriptionConfirmed"
 				class="mt-5 mb-5"
 				border-variant="secondary"
 		        header-bg-variant="secondary"
@@ -304,8 +307,10 @@ library.add(faCheck, faForward, faBackward);
 interface vueRefsMap {
 	$refs: {
 		confirmButton :HTMLButtonElement,
+		subscriptionConfirmed :HTMLDivElement,
 	}
 }
+
 
 const Component = (Vue as VueConstructor<Vue & vueRefsMap>).extend({
 	name: 'assoc-subscription',
@@ -372,6 +377,11 @@ const Component = (Vue as VueConstructor<Vue & vueRefsMap>).extend({
 				if(status === 200){
 					this.form_success=true;
 					localStorage.setItem('subscription-assocname', this.form.assoc_name);
+					this.$refs.subscriptionConfirmed.scrollIntoView({
+						behavior: 'smooth',
+						block: 'center',
+						inline: 'center'
+					});
 				}else{
 					for(let i :number = data.length; i--; )
 						//@ts-ignore

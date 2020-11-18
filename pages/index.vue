@@ -1,12 +1,10 @@
 <template>
 	<div id="landing-page">
 
-		<div class="heroPanel2 centered with-shadow customBorders1 pb-50">
+		<div class="heroPanel2 centered with-shadow customBorders1">
 			<img id="castle-image" class="background" src="https://assets.guebbit.com/associazioni/images/castello-1.jpg" alt="">
-		    <div class="panel-content">
-		        <div>
-		            <assoc-form/>
-		        </div>
+		    <div class="panel-content pb-50">
+		        <assoc-form />
 		    </div>
 			<div class="borderBottom">
 				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2284.311 108.75" xml:space="preserve">
@@ -39,7 +37,6 @@
 			:list="associations"
 			class="mb-50"
 		/>
-
 
 
 
@@ -109,11 +106,6 @@ export default Component;
 	}
 
 	.subscription-section{
-		@include media-breakpoint-down(md) {
-			.form-group{
-				margin-bottom: 0;
-			}
-		}
 		@include media-breakpoint-down(sm) {
 			.page-title{
 				font-size: 2rem;
@@ -131,21 +123,46 @@ export default Component;
 	}
 
 	.partner-section{
-		.card-columns{
-			@include media-breakpoint-down(sm) {
-				-moz-column-count: 2;
-				column-count: 2;
-				-webkit-column-gap: 1.25rem;
-				-moz-column-gap: 1.25rem;
-				grid-column-gap: 1.25rem;
-				column-gap: 1.25rem;
-				orphans: 1;
-				widows: 1;
+		.assoc-masonry{
+			-webkit-column-gap: 1rem;
+			-moz-column-gap: 1rem;
+			grid-column-gap: 1rem;
+			column-gap: 1rem;
+			orphans: 1;
+			widows: 1;
+			& > * {
+				-webkit-column-break-inside: avoid;
+				page-break-inside: avoid;
+				break-inside: avoid;
+			}
+			-moz-column-count: 2;
+			column-count: 2;
+			@include media-breakpoint-up(md) {
+				-moz-column-count: 3;
+				column-count: 3;
 			}
 		}
 		.card{
+			display: block;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			.card-title{
+				margin: 0;
+			}
 			img{
 				padding: 24px;
+			}
+			@include media-breakpoint-down(md) {
+				.card-body,
+				img{
+					padding: 12px;
+				}
+				.card-link{
+					font-size: 12px;
+				}
+				.card-title{
+					font-size: 14px;
+				}
 			}
 		}
 	}
