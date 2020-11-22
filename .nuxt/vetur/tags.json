@@ -11,6 +11,12 @@
   "LazyHeader": {
     "description": "Auto imported from components/generic/Header.vue"
   },
+  "ModalCompatibility": {
+    "description": "Auto imported from components/modals/modalCompatibility.vue"
+  },
+  "LazyModalCompatibility": {
+    "description": "Auto imported from components/modals/modalCompatibility.vue"
+  },
   "AssocList": {
     "description": "Auto imported from components/signup/AssocList.vue"
   },
@@ -34,5 +40,11 @@
   },
   "LazyInfo": {
     "description": "Auto imported from components/signup/Info.vue"
+  },
+  "DefaultShowStructure": {
+    "description": "Auto imported from components/modals/mixin/defaultShowStructure.ts"
+  },
+  "LazyDefaultShowStructure": {
+    "description": "Auto imported from components/modals/mixin/defaultShowStructure.ts"
   }
 }

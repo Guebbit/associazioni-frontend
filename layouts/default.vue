@@ -3,10 +3,14 @@
 		<main-header id="mainHeader" />
 		<Nuxt />
 		<main-footer id="mainFooter" />
+
+		<modal-compatibility
+			:show="!isCompatible"
+		/>
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 //TODO trovare come metterlo lang="ts" (head() non riconosciuto e problemi vari)
 // https://github.com/nuxt/typescript/issues/28
 import Vue from 'vue';
@@ -15,6 +19,7 @@ import MainHeader from '@/components/generic/Header.vue';
 import MainFooter from '@/components/generic/Footer.vue';
 
 import layoutDefaultStructure from './mixin/layoutDefaultStructure';
+import modalCompatibility from '@/components/modals/modalCompatibility.vue';
 
 const Component = Vue.extend({
 	mixins: [
@@ -22,7 +27,8 @@ const Component = Vue.extend({
 	],
 	components: {
 		MainHeader,
-		MainFooter
+		MainFooter,
+		modalCompatibility,
 	},
 });
 
