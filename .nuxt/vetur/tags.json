@@ -1,28 +1,4 @@
 {
-  "AssocList": {
-    "description": "Auto imported from components/AssocList.vue"
-  },
-  "LazyAssocList": {
-    "description": "Auto imported from components/AssocList.vue"
-  },
-  "Contatti": {
-    "description": "Auto imported from components/Contatti.vue"
-  },
-  "LazyContatti": {
-    "description": "Auto imported from components/Contatti.vue"
-  },
-  "Form": {
-    "description": "Auto imported from components/Form.vue"
-  },
-  "LazyForm": {
-    "description": "Auto imported from components/Form.vue"
-  },
-  "Info": {
-    "description": "Auto imported from components/Info.vue"
-  },
-  "LazyInfo": {
-    "description": "Auto imported from components/Info.vue"
-  },
   "Footer": {
     "description": "Auto imported from components/generic/Footer.vue"
   },
@@ -34,5 +10,29 @@
   },
   "LazyHeader": {
     "description": "Auto imported from components/generic/Header.vue"
+  },
+  "AssocList": {
+    "description": "Auto imported from components/signup/AssocList.vue"
+  },
+  "LazyAssocList": {
+    "description": "Auto imported from components/signup/AssocList.vue"
+  },
+  "Contatti": {
+    "description": "Auto imported from components/signup/Contatti.vue"
+  },
+  "LazyContatti": {
+    "description": "Auto imported from components/signup/Contatti.vue"
+  },
+  "Form": {
+    "description": "Auto imported from components/signup/Form.vue"
+  },
+  "LazyForm": {
+    "description": "Auto imported from components/signup/Form.vue"
+  },
+  "Info": {
+    "description": "Auto imported from components/signup/Info.vue"
+  },
+  "LazyInfo": {
+    "description": "Auto imported from components/signup/Info.vue"
   }
 }

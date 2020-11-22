@@ -1,8 +1,16 @@
 [
   {
+    "name": "signup___it",
+    "path": "/signup",
+    "component": "C:\\\\Users\\\\guerz\\\\Lavoro\\\\server\\\\guebbit.com\\\\admin\\\\work\\\\associazioni\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_6b7a576e"
+  },
+  {
     "name": "index___it",
     "path": "/",
     "component": "C:\\\\Users\\\\guerz\\\\Lavoro\\\\server\\\\guebbit.com\\\\admin\\\\work\\\\associazioni\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_0099aeb1"
   }
 ]
