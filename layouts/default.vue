@@ -5,7 +5,8 @@
 		<main-footer id="mainFooter" />
 
 		<modal-compatibility
-			:show="!isCompatible"
+			:show="!isCompatible && compatibilityModal"
+			@input="(value) => compatibilityModal = value"
 		/>
 	</div>
 </template>
